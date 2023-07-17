@@ -50,12 +50,8 @@ public class StudentController {
 		
 		studentService.saveStudent(student);
 		String newRollNum ="";
-		if(student.getEnrollNum() >99) {
-			newRollNum= "2023"+ student.getEnrollNum();
-		}
-		else if(student.getEnrollNum()>10) {
-			newRollNum= "20230"+ student.getEnrollNum();
-		}
+		newRollNum= "1990"+ student.getEnrollNum();
+		
 		student.setRollNum(newRollNum);
 		studentService.saveStudent(student);
 		return "redirect:/students";
@@ -78,16 +74,7 @@ public class StudentController {
 		Student existingStudent = studentService.getStudentById(id);
 		existingStudent.setEnrollNum(id);
 		existingStudent.setFirstName(student.getFirstName());
-		existingStudent.setMarks(student.getMarks());
-		int existingstudent_marks=Integer.parseInt(existingStudent.getMarks()); 
-		
-		if(existingstudent_marks <= 33) {
-			existingStudent.setStatus("FAIL");
-		}
-		else {
-			existingStudent.setStatus("PASS");
-		}
-			
+		existingStudent.setMarks(student.getMarks());	
 		// save updated student object
 		studentService.updateStudent(existingStudent);
 		return "redirect:/students";		
