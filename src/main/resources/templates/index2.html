@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Portal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Student Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/students}">Student Management</a>
+      </li>
+     
+       <form th:action="@{/logout}" method="post" class="d-flex ms-auto">
+        <input type="submit" class="btn btn-danger navbar-btn" value="Logout" />
+    	</form>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+
+
+
+	<div class ="container">
+		<div class= "row">
+			<h1> Student Portal </h1>
+		</div>
+		
+	
+			<table class="table table-hover table-dark table-striped">
+			
+			<thead class="table-dark">
+				<tr>
+					<th>Student</th>				
+					<th>Details</th>
+					
+				</tr>
+				
+			</thead>
+			<tbody >
+			
+				<tr  th:each ="student: ${students}">
+					<td>Roll No.</td>
+					<td th:text ="${student.rollNum}"></td>
+				</tr>
+				<tr  th:each ="student: ${students}">
+					<td>Name</td>
+					<td th:text ="${student.firstName}"></td>
+				</tr>
+				<tr  th:each ="student: ${students}">
+					<td>Email</td>
+					<td th:text ="${student.email}"></td>
+				</tr>
+				<tr  th:each ="student: ${students}">
+					<td>Marks</td>
+					<td th:text ="${student.marks}"></td>
+				</tr>
+				<tr  th:each ="student: ${students}">
+					<td>Result</td>
+					<td th:text ="${student.status}"></td>
+				</tr>	
+				
+					
+
+			</tbody>
+		</table>
+		
+	
+	</div>
+</body>
+</html>
